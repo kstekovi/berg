@@ -17,7 +17,9 @@ Cypress.Commands.add("cancelForm", (formId) => {
 
 Cypress.Commands.add("resetForm", (formId, managementApi, address) => {
   const resetButton = "#" + formId + ' a.clickable[data-operation="reset"';
-  cy.get(resetButton).click();
+  // Setting the force parameter to true is a workaround turning off cypress checks whether the reset button is clickable, 
+  // as those checks sometimes fail. Next lines check the functionality (not) invoked by the button sufficiently.
+  cy.get(resetButton).click({ force: true });
   cy.get("body").then(($body) => {
     if ($body.find(".modal-footer .btn-hal.btn-primary").length) {
       cy.get(".modal-footer .btn-hal.btn-primary").click({ force: true });
