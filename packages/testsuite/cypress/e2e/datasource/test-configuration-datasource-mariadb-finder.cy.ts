@@ -117,10 +117,13 @@ describe("TESTS: Configuration => Datasource => MariaDB (Finder)", () => {
       managementEndpoint,
       "configuration;path=configuration~subsystems!css~datasources!data-source-driver~datasources"
     );
+    cy.wait(10000);
     cy.get(id).should("be.visible");
     cy.get(id).click();
+    cy.wait(10000);
     cy.get(id + " button.btn.btn-finder.dropdown-toggle").click();
     cy.get(id + ' a.clickable:contains("Test Connection")').click();
+    cy.wait(10000);
     cy.get('span:contains("Successfully tested connection for data source ' + mariadbDSToAdd.name + '")').should(
       "be.visible"
     );
@@ -197,7 +200,9 @@ describe("TESTS: Configuration => Datasource => MariaDB (Finder)", () => {
     cy.get(".modal-footer .btn-primary").click();
     cy.get(".wizard-pf-steps .wizard-pf-step.active .wizard-pf-step-number").should("have.text", "5");
     cy.get(".wizard-pf-steps .wizard-pf-step.active .wizard-pf-step-title").should("have.text", "Test Connection");
+    cy.wait(10000);
     cy.get("#ds-configuration-test-connection").click();
+    cy.wait(10000);
     cy.get(".blank-slate-pf-main-action").should("have.text", "Test Connection Successful");
     cy.get(".modal-footer .btn-primary").click();
     cy.get(".wizard-pf-steps .wizard-pf-step.active .wizard-pf-step-number").should("have.text", "6");
@@ -251,7 +256,9 @@ describe("TESTS: Configuration => Datasource => MariaDB (Finder)", () => {
     cy.get(".modal-footer .btn-primary").click();
     cy.get(".wizard-pf-steps .wizard-pf-step.active .wizard-pf-step-number").should("have.text", "6");
     cy.get(".wizard-pf-steps .wizard-pf-step.active .wizard-pf-step-title").should("have.text", "Test Connection");
+    cy.wait(10000);
     cy.get("#ds-configuration-test-connection").click();
+    cy.wait(10000);
     cy.get(".blank-slate-pf-main-action").should("have.text", "Test Connection Successful");
     cy.get(".modal-footer .btn-primary").click();
     cy.get(".wizard-pf-steps .wizard-pf-step.active .wizard-pf-step-number").should("have.text", "7");
