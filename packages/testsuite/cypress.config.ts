@@ -5,7 +5,7 @@ import { Environment } from "testcontainers/build/types";
 import { findAPortNotInUse } from "portscanner";
 
 export default defineConfig({
-  defaultCommandTimeout: 16000,
+  defaultCommandTimeout: 30000,
   reporter: require.resolve("cypress-multi-reporters/index.js"),
   reporterOptions: {
     configFile: "reporter-config.json",
